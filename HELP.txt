@@ -1,0 +1,77 @@
+RAVEN 2.0.0 — OSINT & Intelligence Gathering Tool
+
+USAGE:
+    raven.py [OPTIONS] TARGET
+
+DESCRIPTION:
+    Gathers intelligence on targets across three modes:
+    - Domain: emails, subdomains, exposure
+    - Email: registrations, breaches
+    - Username: accounts across platforms
+
+REQUIRED:
+    TARGET              Target to scan (auto-detected: domain/email/username)
+
+OPTIONS:
+    -h, --help          Show this help message
+    --version           Show version information
+    --json              Output JSON and save .json file
+    -o, --output DIR    Output directory (default: ./raven-results)
+    --timeout SECONDS   Tool timeout in seconds (default: 60)
+
+EXAMPLES:
+    raven.py example.com              # Domain scan
+    raven.py user@example.com         # Email scan
+    raven.py johndoe                  # Username scan
+    raven.py example.com --json       # JSON output
+    raven.py user@example.com -o scans
+    raven.py johndoe --timeout 120
+
+TARGET TYPES:
+    Domain (example.com):
+        - Finds emails with theHarvester
+        - Discovers subdomains with subfinder
+        - Checks exposure with shodan
+
+    Email (user@example.com):
+        - Scans registrations with holehe
+        - Identifies breaches
+        - Reports platform usage
+
+    Username (johndoe):
+        - Searches platforms with sherlock
+        - Finds account URLs
+        - Maps online presence
+
+REQUIRED TOOLS:
+    Domain mode:
+        - subfinder (~/go/bin/)
+        - theHarvester (PATH) - optional
+        - shodan (PATH) - optional
+
+    Email mode:
+        - holehe (~/.local/bin/)
+
+    Username mode:
+        - sherlock (/usr/bin/)
+
+OUTPUT:
+    Console:    Progress steps + formatted results
+    Files:      Timestamped .txt (and .json if --json) in output directory
+
+EXIT CODES:
+    0           Success
+    1           Tool execution failure
+    2           Invalid arguments or missing tools
+
+AUTHOR:
+    CobraSEC (Jakk @jakkxbt)
+
+LEGAL:
+    Authorized security testing and research only.
+    Unauthorized intelligence gathering may be illegal.
+
+For more information:
+    See GUIDE.md for detailed usage
+    See USAGE.md for complete reference
+    See usage-eli5.md for beginner-friendly guide
