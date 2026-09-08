@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/banner.png" alt="CobraSEC · Red Arsenal · raven" width="100%">
+</p>
+
 # raven
 
 OSINT starting point. Auto-detects what you give it - domain, email or username - and runs the right lookups: emails and subdomains for a domain, breach and registration exposure for an email, cross-platform accounts for a username.
